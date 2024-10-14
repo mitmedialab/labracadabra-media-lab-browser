@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+.yearList {
+    height: 100vh;
+}
+
+.year-selector {
+    width: 20%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.year-selector ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%; /* Center ul within the container */
+    transform: translateY(-80%);
+    width: 100%;
+}
+
+.year-selector li {
+    margin: 10px 0;
+    font-size: 18px;
+    transition: transform 0.3s, font-size 0.3s, color 0.3s, opacity 0.3s;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+.year-selector li.active {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    opacity: 1;
+}
+
+.year-selector li:not(.active) {
+    color: #999;
+    opacity: 0.5;
+    transform: scale(0.8);
+}
+
+.project-display {
+    width: 80%;
+    height: 100vh; /* Match the height of the year selector */
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background-color: #f0f0f0;
+    overflow: hidden; /* Hide overflow by default */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /*gap: 10px; */
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    /*padding: 20px;*/
+    box-sizing: border-box;
+}
+
+.project-container {
+    position: relative;
+    width: 100%;
+    height:fit-content;
+    padding-bottom: 100%; /* Maintain square aspect ratio */
+    background-color: #ccc; /* Fallback background color */
+    overflow: hidden;
+}
+
+.project-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Transparent by default */
+    transition: background-color 0.3s ease-in-out;
+    z-index: 1; /* Ensure this overlay is between the image and text */
+}
+
+.project-container:hover::after {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+}
+
+.project-container img {
+    position: absolute; /* Position it relative to the container */
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+}
+
+.title-overlay {
+    position: absolute;
+    bottom: 0; 
+    left: 0; 
+    width: 100%;
+    height:auto;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    z-index: 2; /* Ensure this overlay is between the image and text */
+}
