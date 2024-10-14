@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let startYear = new Date(project.start_on).getFullYear();
                 if (startYear < 1985){
                     startYear = new Date(project.created).getFullYear();
+                    project.start_on = project.created;
                 }
                 return isNaN(startYear) ? null : startYear;
             }).filter(year => year !== null))];
@@ -64,8 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 projectGrid.innerHTML = '';
                 projects.forEach(project => {
                     const startYear = new Date(project.start_on).getFullYear();
+                    const visibility = project.visibility;
 
-                    if (startYear === year) {
+                    if (startYear === year && visibility=="PUBLIC") {
                         const projectContainer = document.createElement('div');
                         projectContainer.classList.add('project-container');
                         const imgURL = project.hero_image_url;
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const img = document.createElement('img');
                             img.src = imgURL;
                             img.alt = project.title;
+                            img.loading="lazy";
                             projectContainer.appendChild(img);
                         } else {
                             const grayValue = Math.floor(Math.random() * 256);
