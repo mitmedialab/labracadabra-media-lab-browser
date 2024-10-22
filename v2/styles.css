@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* background-color: #333; */
+    background-color: black;
+    overflow: hidden;
+}
+
+.container {
+    /* background-color: #222; */
+    /* background-color: #222; */
+    /* background-color: #333; */
+    padding: 40px;
+    border-radius: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;  /* Add relative positioning */
+    overflow: hidden;    /* Ensure child elements don't overflow */
+    transition: transform 0.5s ease;
+}
+
+.year {
+    font-size: 6rem;
+    margin: 20px 0;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    color: #fff;
+    position: relative;
+    display: flex;
+}
+
+.digit {
+    /* background-color: #111; */
+    background-color: #222;
+    /* background-color: #333; */
+    padding: 20px 10px;
+    margin: 0 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;
+    /* background-color: #444; */
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+
+
+.video-column {
+    align-content:center;
+    position: absolute;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 66%;
+    /*background-color: #222;*/
+    background-color: black;
+    color: #fff;
+    transition: right 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.video-column video {
+    width:100%;
+    margin:auto;
+    padding:1em;
+}
+/*.video-column img {
+    height:50%;
+    margin:auto;
+    padding:1em;
+}*/
+
+.video-column.visible {
+    right: 0;
+    opacity: 1;
+    overflow-y: hidden; /* Prevents scrolling bars */
+    display: flex;
+    flex-direction: column;
+}
+
+.video-wrapper {
+    position: absolute;
+    top: 100%;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    transition: top 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.video-wrapper.active {
+    top: 0;
+    opacity: 1;
+    /*display:contents;*/
+}
+
+.video-wrapper.previous {
+    top: -100%; /* Out of view on the top */
+}
+
+.video-wrapper.next {
+    top: 100%; /* Out of view on the bottom */
+}
+
+.wrapper {
+    margin: 20px;
+}
+
+.input-bar {
+    display: flex;
+    align-items: center;
+    /* border: 2px solid #ccc; */
+    padding: 10px;
+    border-radius: 15px;
+    /* background-color: #f8f8f8; */
+    background-color: #222;
+}
+.character {
+    width: 30px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    font-size: 18px;
+    /* background-color: white;  */
+    cursor: pointer;
+    color:white;
+}
+.focus {
+    border-bottom-color: white;
+    /* border-bottom-color: blue; */
+    /* background-color: #e0e7ff; */
+    background-color: #333;
+}
+.submit-button {
+    padding: 8px 15px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    height:30px;
+    justify-content: center;
+    margin-left:auto;
+    align-content: center;
+    transition: background-color 0.2s;
+}
+.submit-button.focus {
+    background-color: #555;
+}
+
+.future-wrapper {
+    padding: 10px;
+}
+
+.img-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the items horizontally */
+    width: 100%; /* Set a full width to the container */
+    margin-top: 20px; /* Optional: adds space from the top */
+}
+
+/* Styles for each image wrapper */
+.video-wrapper { /* Consider renaming this class */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the items vertically within each wrapper */
+    margin-bottom: 20px; /* Adds space between each image and title block */
+}
+
+img {
+    width: 100%; /* Adjust per your design needs; this scales image width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px;
+}
+
+.image-title {
+    margin-top: 8px; /* Adds vertical space between image and title */
+    color: #333; /* Dark text color */
+    font-family: Arial, sans-serif; /* Aesthetic font for title */
+    text-align: center; /* Center-align the title text */
+    font-size: 16px; /* Appropriate font size, but can be adjusted */
+}
+
+video.screensaver {
+    position: fixed;          /* Positions the video relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;             /* Full width of the viewport */
+    height: 100vh;            /* Full height of the viewport */
+    z-index: 9999;            /* Ensure the video is above all other elements */
+    display: none;            /* Initially hidden until activated */
+    object-fit: cover;        /* This ensures the video covers the entire viewport */
+    background-color: black;  /* Fallback color, in case the video takes a moment to load */
+}
